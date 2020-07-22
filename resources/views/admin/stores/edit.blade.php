@@ -8,7 +8,7 @@
 <!-- <input type="hidden" name="_token" value="{{csrf_token()}}"> -->
 <div class="form-group">
     <label>Nome Loja</label>
-    <input type="text" name="name" class="form-control  @error('name') is-invalid @enderror" value="{{old('name')}}">
+    <input type="text" name="name" class="form-control  @error('name') is-invalid @enderror" value="{{$store->name}}">
     @error('name')
     <div class="invalid-feedback">
     {{$message}}
@@ -18,7 +18,7 @@
 </div>
 <div class="form-group">
     <label>Descrição</label>
-    <input type="text" name="description" class="form-control @error('description') is-invalid @enderror" value="{{old('description')}}">
+    <input type="text" name="description" class="form-control @error('description') is-invalid @enderror" value="{{$store->description}}">
     @error('description')
     <div class="invalid-feedback">
     {{$message}}
@@ -31,7 +31,7 @@
 </div>
 <div class="form-group">
     <label>Celular/WhatsApp</label>
-    <input type="text" name="mobile_phone" class="form-control @error('phone') is-invalid @enderror" value="{{old('phone')}}">
+    <input type="text" name="mobile_phone" class="form-control @error('phone') is-invalid @enderror" value="{{$store->phone}}">
     @error('phone')
     <div class="invalid-feedback">
     {{$message}}
@@ -39,8 +39,16 @@
     @enderror
 </div>
 <div class="form-group">
-    <label>Fotos do Produto</label>
-    <input type="file" name="logo" class="form-control">
+<p>
+<img src="{{asset('storage/' . $store->logo)}}" alt="">
+</p>    
+    <label>Foto da Logo</label>
+    <input type="file" name="logo" class="form-control" class="form-control @error('logo') is-invalid @enderror">
+    @error('logo')
+    <div class="invalid-feedback">
+        {{$message}}
+    </div>
+    @enderror
 </div>
 <div class="form-group">
     <label>Slug</label>
