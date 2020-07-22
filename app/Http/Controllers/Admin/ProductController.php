@@ -129,7 +129,7 @@ class ProductController extends Controller
         return redirect()->route('admin.products.index');
     }
 
-    private function imageUpload(Request $request, $imageColumn)
+    /*private function imageUpload(Request $request, $imageColumn)
     {
         $images = $request->file('photos');
         $uploadedImages = [];
@@ -137,5 +137,5 @@ class ProductController extends Controller
             $uploadedImages[] = [$imageColumn=>$image->store('products','public')];
         }
         return $uploadedImages;
-    }
+    } */
 }
