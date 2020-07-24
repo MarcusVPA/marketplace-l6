@@ -50,10 +50,10 @@
     </div>
     @enderror
 </div>
-<div class="form-group">
+<!-- <div class="form-group">
     <label>Slug</label>
     <input type="text" name="slug" class="form-control" value="{{$store->slug}}">
-</div>
+</div> -->
     <button type="submit" class="btn btn-lg btn-success">Atualizar Loja</button>
 </div>
 </form>

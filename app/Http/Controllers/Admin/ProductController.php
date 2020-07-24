@@ -54,11 +54,11 @@ class ProductController extends Controller
         //
         $data = $request->all();
         //$store = \App\Store::find($data['store']);
+        $categories = $request->get('categories', null);
         $store = auth()->user()->store; // atributo é diferente de método, neste caso o "store" é um atributo. Acessa a loja do usuário autenticado
         //$store->products()->create($data);
         $product = $store->products()->create($data); // produto criado para a loja
-        dd($product->categories());
-        $product->categories()->sync($data['categories']); // acessa a ligação de produto com categorias e faz o save
+        $product->categories()->sync($categories); // acessa a ligação de produto com categorias e faz o save
         if($request->hasFile('photos')) {
             // faz a inserção destas imagens (das referência) na base 
             $images = $this->imageUpload($request->file('photos'),'image'); // $request
@@ -105,9 +105,12 @@ class ProductController extends Controller
     {
         //
         $data = $request->all();
+        $categories = $request->get('categories', null); // chave categories
         $product = $this->product->findOrFail($product);
         $product->update($data);
-        $product->categories()->sync($data['categories']); // acessa a ligação de produto com categorias e faz o save
+        if(!is_null($categories)) {
+            $product->categories()->sync($categories); // acessa a ligação de produto com categorias e faz o save
+        }
         if($request->hasFile('photos')) {
             // faz a inserção destas imagens (das referência) na base 
             $images = $this->imageUpload($request->file('photos'),'image'); // $request

@@ -11,12 +11,14 @@
 |
 */
 
-Route::get('/', function () {
+/* Route::get('/', function () {
     $helloWorld = 'Hello World';
     //return view('welcome',['helloWorld' => $helloWorld]); 
     // outra maneira
     return view('welcome',compact('helloWorld')); 
-})->name('home');
+})->name('home'); */
+
+Route::get('/','HomeController@index')->name('home');
 
 Route::get('/model', function () {
     // $products = \App\Product::all(); // lista todos os produtos

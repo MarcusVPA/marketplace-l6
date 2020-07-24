@@ -51,10 +51,10 @@
     </div>
     @enderror
 </div>
-<div class="form-group">
+<!-- <div class="form-group">
     <label>Slug</label>
     <input type="text" name="slug" class="form-control" value="{{old('slug')}}">
-</div>
+</div> -->
 <!-- <div class="form-group">
     <label>Usuário</label>
     <select name="user" class="form-control">
