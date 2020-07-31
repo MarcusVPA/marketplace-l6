@@ -92,6 +92,10 @@ Route::get('/model', function () {
     return $product->categories;
 });
 
+Route::prefix('checkout')->name('checkout.')->group(function(){
+    Route::get('/','CheckoutController@index')->name('index');
+});
+
 Route::group(['middleware'=>['auth']],function(){
     Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function(){ // pode usar com ou sem as barras prefix(/admin) e namespace('Admin\\')
         /*Route::prefix('stores')->name('stores.')->group(function(){
