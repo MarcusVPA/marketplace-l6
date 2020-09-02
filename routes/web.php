@@ -28,6 +28,10 @@ Route::prefix('cart')->name('cart.')->group(function(){
     Route::get('cancel','CartController@cancel')->name('cancel');
 });
 
+Route::prefix('checkout')->name('checkout.')->group(function(){
+    Route::get('/','CheckoutController@index')->name('index');
+});
+
 Route::get('/model', function () {
     // $products = \App\Product::all(); // lista todos os produtos
    /* $user= new \App\User();
@@ -90,10 +94,6 @@ Route::get('/model', function () {
     //dd($product->categories()->sync([2])); //  adiciona e/ou remove (junção de attach e detach)
     //return \App\User::all();
     return $product->categories;
-});
-
-Route::prefix('checkout')->name('checkout.')->group(function(){
-    Route::get('/','CheckoutController@index')->name('index');
 });
 
 Route::group(['middleware'=>['auth']],function(){
